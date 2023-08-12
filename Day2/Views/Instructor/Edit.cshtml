@@ -1,0 +1,56 @@
+﻿@model Instructor
+
+@{
+	SelectList depts = new SelectList(ViewBag.dept, "ID", "Name",Model.DeptID);
+	SelectList crss = new SelectList(ViewBag.crs, "ID", "Name",Model.CrsID);
+
+}
+
+<form  asp-action="EditSave" asp-controller="Instructor" asp-route-id="@Model.ID" method="post">
+
+	<input asp-for="ID" type="hidden" class="form-control" />
+
+	<div class="form-group mt-1">
+		<label asp-for="Name"></label>
+		<input asp-for="Name"  class="form-control" />
+		<span asp-validation-for="Name" class="text-danger"></span>
+	</div>
+
+	<div class="form-group mt-1">
+		<label asp-for="Adress"></label>
+		<input asp-for="Adress" class="form-control" />
+		<span asp-validation-for="Adress" class="text-danger"></span>
+	</div>
+
+	<div class="form-group mt-1">
+		<label asp-for="Salary"></label>
+		<input asp-for="Salary" class="form-control" />
+		<span asp-validation-for="Salary" class="text-danger"></span>
+	</div>
+
+	<div class="form-group mt-1">
+		<label asp-for="Image"></label>
+		<input asp-for="Image" class="form-control" />
+		<span asp-validation-for="Image" class="text-danger"></span>
+	</div>
+
+	<div class="form-group mt-1">
+		<label asp-for="DeptID"></label>
+		<select asp-for="DeptID" asp-items="depts" class="form-control">			
+		</select>
+		<span asp-validation-for="DeptID" class="text-danger"></span>
+	</div>
+
+	<div class="form-group mt-1">
+		<label asp-for="CrsID"></label>
+		<select asp-for="CrsID" asp-items="crss" class="form-control ">
+		</select>
+		<span asp-validation-for="CrsID" class="text-danger"></span>
+	</div>
+
+	<input type="submit" value="Save" class="btn btn-success mt-1"/>
+</form>
+@section Scripts{
+	<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+	<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+}

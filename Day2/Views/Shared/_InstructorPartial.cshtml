@@ -1,0 +1,29 @@
+﻿@model List<Instructor>
+
+<table class="table table-bordered table-striped text-center">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Image</th>
+			<th>Adreess</th>
+			<th>Salary</th>
+			<th>Department</th>
+			<th>Course</th>
+			<th>Operation</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>@item.Name</td>
+				<td><img src="\Images\@item.Image" height="50" width="50"></td>
+				<td>@item.Adress</td>
+				<td>@item.Salary</td>
+				<td>@item.Department.Name</td>
+				<td>@item.Course.Name</td>
+				<td><a href="\Instructor\Edit\@item.ID">Edit</a></td>
+			</tr>
+		}
+	</tbody>
+</table>

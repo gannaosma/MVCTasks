@@ -1,0 +1,111 @@
+﻿@model Instructor
+
+@{
+	SelectList depts;
+	SelectList crss;
+	if(Model != null)
+	{
+		depts = new SelectList(ViewBag.dept, "ID", "Name", Model.DeptID);
+		crss = new SelectList(ViewBag.crs, "ID", "Name", Model.CrsID);
+	}
+	else
+	{
+		depts = new SelectList(ViewBag.dept, "ID", "Name");
+		crss = new SelectList(ViewBag.crs, "ID", "Name");
+		
+	}
+}
+<form asp-action="AddSave" asp-controller="Instructor" method="post">
+
+	<div class="form-group mt-1">
+		<label asp-for="Name"></label>
+		<input asp-for="Name" class="form-control" />
+		<span asp-validation-for="Name" class="text-danger"></span>
+	</div>
+
+	<div class="form-group mt-1">
+		<label asp-for="Adress"></label>
+		<input asp-for="Adress" class="form-control" />
+		<span asp-validation-for="Adress" class="text-danger"></span>
+	</div>
+
+	<div class="form-group mt-1">
+		<label asp-for="Salary"></label>
+		<input asp-for="Salary" class="form-control" />
+		<span asp-validation-for="Salary" class="text-danger"></span>
+	</div>
+
+	<div class="form-group mt-1">
+		<label asp-for="Image"></label>
+		<input asp-for="Image" class="form-control" />
+		<span asp-validation-for="Image" class="text-danger"></span>
+	</div>
+
+
+	<div class="form-group mt-1">
+		<label asp-for="DeptID"></label>
+		<select asp-for="DeptID" asp-items="depts" class="form-control">
+		</select>
+		<span asp-validation-for="DeptID" class="text-danger"></span>
+	</div>
+
+	<div class="form-group mt-1">
+		<label asp-for="CrsID"></label>
+		<select asp-for="CrsID" asp-items="crss" class="form-control">
+		</select>
+		<span asp-validation-for="CrsID" class="text-danger"></span>
+	</div>
+
+	<input type="submit" value="Save" class="btn btn-success mt-1" />
+</form>
+
+@section Scripts{
+	<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+	<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+}
+
+@*<form action="\Instructor\AddSave" method="post">
+
+	<div class="form-group mt-1">
+		<label for="Name">Name</label>
+		<input type="text" name="Name" id="Name" class="form-control" />
+	</div>
+
+	<div class="form-group mt-1">
+		<label for="Adress">Adress</label>
+		<input type="text" name="Adress" id="Adress" class="form-control" />
+	</div>
+
+	<div class="form-group mt-1">
+		<label for="Salary">Salary</label>
+		<input type="text" name="Salary" id="Salary" class="form-control" />
+	</div>
+
+	<div class="form-group mt-1">
+		<label for="Image">Image</label>
+		<input type="text" name="Image" id="Image" class="form-control" />
+	</div>
+
+	<div class="form-group mt-1">
+		<label for="DeptID">Department</label>
+		<select name="DeptID" id="DeptID" class="form-control">
+			@foreach(var item in ViewBag.dept)
+			{
+				<option value="@item.ID">@item.Name</option>
+			}
+		</select>
+	</div>
+
+	<div class="form-group mt-1">
+		<label for="CrsID">Course</label>
+		<select name="CrsID" id="CrsID" class="form-control ">
+			@foreach (var item in ViewBag.crs)
+			{
+				<option value="@item.ID">@item.Name</option>
+			}
+		</select>
+	</div>
+
+	<input type="submit" value="Save" class="btn btn-success mt-1" />
+</form>*@
+
